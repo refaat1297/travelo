@@ -1,0 +1,14 @@
+@import "helpers/fonts";
+
+:root {
+    --primary-color: #ff4a52;
+    --secondary-color: #1ec6b6;
+    --dark-blue-color: #040e27;
+    --light-gray-color: #f7fafd;
+    --gray-text-color: #7a838b;
+    --black-text-color: #040e27;
+}
+
+body {
+    font-family: textFont, sans-serif;
+}
