@@ -91,6 +91,7 @@ export default {
         padding: 18px 20px 18px 28px;
         display: grid;
         place-items: center;
+        cursor: pointer;
 
         @media (max-width: 767px) {
             transform: scale(.9);
