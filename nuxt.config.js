@@ -25,6 +25,7 @@ export default {
     plugins: [
         '~/plugins/preview.client.js',
         '~/plugins/firebase.js',
+        // {src: '~/plugins/vue-cool-lightbox.js', mode: 'client'},
         '~/plugins/vue-awesome-swiper.js',
         // '~/plugins/easy-slider.js'
     ],

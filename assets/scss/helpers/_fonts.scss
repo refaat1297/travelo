@@ -7,3 +7,14 @@
     src: url("~/assets/fonts/Rubik-Regular.ttf");
     font-family: textFont;
 }
+
+@keyframes pulse-border {
+    0% {
+        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+        opacity: 0;
+    }
+}

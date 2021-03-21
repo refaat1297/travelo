@@ -94,6 +94,11 @@ export default {
                 &::placeholder {
                     text-transform: capitalize;
                     font-weight: 200;
+                    font-size: .9rem;
+
+                    @media (max-width: 767px) {
+                        font-size: .8rem;
+                    }
                 }
 
                 &:focus {
