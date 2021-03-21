@@ -10,11 +10,12 @@
                     <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf moon beard words.</p>
                 </div>
 
-                <div class="row" v-if="popularDestinations">
+                <div class="row" v-if="popularDestinations.length > 0">
                     <div class="col-12 col-md-6 col-lg-4" v-for="destination in popularDestinations" :key="destination.id">
                         <PopularDestinationCard :destination="destination" />
                     </div>
                 </div>
+                <h3 v-else>loading..</h3>
             </div>
         </section>
     </main>
@@ -58,8 +59,28 @@ export default {
 <style lang="scss">
 .popular-destination {
     .info {
+        text-align: center;
+        margin-bottom: 1.7rem;
+
         h2 {
-            color: red;
+            font-weight: 600;
+            font-size: 1.7rem;
+
+            @media (max-width: 767px) {
+                font-size: 1.4rem;
+            }
+        }
+
+        p {
+            color: var(--gray-text-color);
+            max-width: 60%;
+            width: 100%;
+            margin: auto;
+
+            @media (max-width: 767px) {
+                max-width: 100%;
+                font-size: .9rem;
+            }
         }
     }
 }

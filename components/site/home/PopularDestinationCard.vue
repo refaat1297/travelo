@@ -27,6 +27,7 @@ export default {
     border-radius: 5px;
     overflow: hidden;
     transition: all .2s ease-in-out;
+    margin-bottom: 1.3rem;
     //min-height: 400px;
     //height: 100%;
 
@@ -48,7 +49,8 @@ export default {
     }
 
     img {
-
+        width: 100%;
+        object-fit: cover;
     }
 
     .overlay {
@@ -66,7 +68,7 @@ export default {
 
         .content {
             position: absolute;
-            left: 10px;
+            left: 20px;
             bottom: 15px;
             text-transform: capitalize;
             display: flex;
@@ -77,9 +79,13 @@ export default {
                 font-weight: 500;
                 color: #fff;
                 margin-bottom: 0;
-                font-size: 1.5rem;
+                font-size: 1.4rem;
                 margin-right: .4rem;
                 transition: all .2s ease-in-out;
+
+                @media (max-width: 767px) {
+                    font-size: 1.2rem;
+                }
             }
 
             a {
@@ -92,6 +98,10 @@ export default {
                 padding: .2rem .5rem;
                 font-size: .8rem;
                 transition: all .2s ease-in-out;
+
+                @media (max-width: 767px) {
+                    font-size: .7rem;
+                }
             }
         }
     }
