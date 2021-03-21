@@ -1,5 +1,6 @@
 export default {
     // Global page headers: https://go.nuxtjs.dev/config-head
+    target: 'static',
     head: {
         title: 'travelo',
         htmlAttrs: {
@@ -22,6 +23,7 @@ export default {
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
+        '~/plugins/preview.client.js',
         '~/plugins/firebase.js'
     ],
 
@@ -40,7 +42,13 @@ export default {
     ],
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
-    axios: {},
+    axios: {
+        baseURL: 'https://a-travelo-refaat-default-rtdb.firebaseio.com'
+    },
+
+    generate: {
+        fallback: true
+    },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {}

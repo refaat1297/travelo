@@ -1,6 +1,7 @@
 <template>
     <main class="home-page">
 
+        <nuxt-link to="/dashboard">dashboard</nuxt-link>
 
         <section class="popular-destination">
             <div class="container">
@@ -25,21 +26,31 @@ import {fireDb} from "~/plugins/firebase";
 
 export default {
     components: {PopularDestinationCard},
-    data () {
-        return {
-            popularDestinations: null
-        }
-    },
-    async fetch () {
-        await fireDb.collection('popular-destinations')
-            .get()
-            .then(snapShot => {
-                this.popularDestinations = snapShot.docs.map(doc => {
-                    return Object.assign({}, doc.data(), {
-                        id: doc.id
+    async asyncData (context) {
+        let result = await context.app.$axios.$get('/popular-destinations.json')
+            .then(res => {
+                let data = Object.entries(res).map(dest => {
+                    return Object.assign({}, dest[1], {
+                        id: dest[0]
                     })
                 })
+
+                return data
             })
+
+        console.log(result)
+        // let popularDestinations = await fireDb.collection('popular-destinations')
+        //     .get()
+        //     .then(snapShot => {
+        //         return  snapShot.docs.map(doc => {
+        //             return Object.assign({}, doc.data(), {
+        //                 id: doc.id
+        //             })
+        //         })
+        //
+        //     })
+
+        return {popularDestinations: result}
     }
 }
 </script>

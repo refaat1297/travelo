@@ -1,5 +1,8 @@
 <template>
-    <h1>dahsboard</h1>
+    <div>
+        <h1>dahsboard</h1>
+        <nuxt-link to="/">home</nuxt-link>
+    </div>
 </template>
 
 <script>
