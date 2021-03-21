@@ -24,7 +24,8 @@ export default {
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
         '~/plugins/preview.client.js',
-        '~/plugins/firebase.js'
+        '~/plugins/firebase.js',
+        '~/plugins/easy-slider.js'
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components

@@ -1,7 +1,6 @@
 <template>
     <main class="home-page">
-
-        <nuxt-link to="/dashboard">dashboard</nuxt-link>
+<!--        <AppSlider />-->
 
         <section class="popular-destination">
             <div class="container">
@@ -18,15 +17,20 @@
                 <h3 v-else>loading..</h3>
             </div>
         </section>
+
+        <Subscribe />
+        <nuxt-link to="/dashboard">dashboard</nuxt-link>
     </main>
 </template>
 
 <script>
 import PopularDestinationCard from "../components/site/home/PopularDestinationCard";
 import {fireDb} from "~/plugins/firebase";
+import Subscribe from "../components/shared/Subscribe";
+import AppSlider from "../components/shared/AppSlider";
 
 export default {
-    components: {PopularDestinationCard},
+    components: {AppSlider, Subscribe, PopularDestinationCard},
     async asyncData (context) {
         let result = await context.app.$axios.$get('/popular-destinations.json')
             .then(res => {
@@ -58,6 +62,8 @@ export default {
 
 <style lang="scss">
 .popular-destination {
+    padding: 5rem 0;
+
     .info {
         text-align: center;
         margin-bottom: 1.7rem;

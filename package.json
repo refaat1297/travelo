@@ -15,7 +15,8 @@
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.9.1",
     "firebase": "^8.3.1",
-    "nuxt": "^2.15.3"
+    "nuxt": "^2.15.3",
+    "vue-easy-slider": "^5.3.4"
   },
   "devDependencies": {
     "fibers": "^5.0.0",
