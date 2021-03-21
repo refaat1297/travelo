@@ -25,7 +25,8 @@ export default {
     plugins: [
         '~/plugins/preview.client.js',
         '~/plugins/firebase.js',
-        '~/plugins/easy-slider.js'
+        '~/plugins/vue-awesome-swiper.js',
+        // '~/plugins/easy-slider.js'
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components

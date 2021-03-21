@@ -36,6 +36,8 @@
             </div>
         </section>
 
+<!--        <Testimonials />-->
+
 
         <nuxt-link to="/dashboard">dashboard</nuxt-link>
     </main>
@@ -47,9 +49,10 @@ import {fireDb} from "~/plugins/firebase";
 import Subscribe from "../components/shared/Subscribe";
 import AppSlider from "../components/shared/AppSlider";
 import PopularPlacesCard from "../components/site/home/PopularPlacesCard";
+import Testimonials from "../components/site/home/Testimonials";
 
 export default {
-    components: {PopularPlacesCard, AppSlider, Subscribe, PopularDestinationCard},
+    components: {Testimonials, PopularPlacesCard, AppSlider, Subscribe, PopularDestinationCard},
     async asyncData (context) {
         let popularDestinations = await context.app.$axios.$get('/popular-destinations.json')
             .then(res => {
