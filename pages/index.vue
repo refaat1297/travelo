@@ -55,6 +55,12 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+.popular-destination {
+    .info {
+        h2 {
+            color: red;
+        }
+    }
+}
 </style>
