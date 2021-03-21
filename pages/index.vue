@@ -19,6 +19,24 @@
         </section>
 
         <Subscribe />
+
+        <section class="popular-places">
+            <div class="container">
+                <div class="info">
+                    <h2>Popular Places</h2>
+                    <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf moon beard words.</p>
+                </div>
+
+                <div class="row" v-if="popularPlaces.length > 0">
+                    <div class="col-12 col-md-6 col-lg-4" v-for="place in popularPlaces" :key="place.id">
+                        <PopularPlacesCard :place="place" />
+                    </div>
+                </div>
+                <div v-else>loading...</div>
+            </div>
+        </section>
+
+
         <nuxt-link to="/dashboard">dashboard</nuxt-link>
     </main>
 </template>
@@ -28,11 +46,12 @@ import PopularDestinationCard from "../components/site/home/PopularDestinationCa
 import {fireDb} from "~/plugins/firebase";
 import Subscribe from "../components/shared/Subscribe";
 import AppSlider from "../components/shared/AppSlider";
+import PopularPlacesCard from "../components/site/home/PopularPlacesCard";
 
 export default {
-    components: {AppSlider, Subscribe, PopularDestinationCard},
+    components: {PopularPlacesCard, AppSlider, Subscribe, PopularDestinationCard},
     async asyncData (context) {
-        let result = await context.app.$axios.$get('/popular-destinations.json')
+        let popularDestinations = await context.app.$axios.$get('/popular-destinations.json')
             .then(res => {
                 let data = Object.entries(res).map(dest => {
                     return Object.assign({}, dest[1], {
@@ -43,19 +62,20 @@ export default {
                 return data
             })
 
-        console.log(result)
-        // let popularDestinations = await fireDb.collection('popular-destinations')
-        //     .get()
-        //     .then(snapShot => {
-        //         return  snapShot.docs.map(doc => {
-        //             return Object.assign({}, doc.data(), {
-        //                 id: doc.id
-        //             })
-        //         })
-        //
-        //     })
+        let popularPlaces = await context.app.$axios.$get('/popular-places.json')
+            .then(res => {
+                let data = Object.entries(res).map(dest => {
+                    return Object.assign({}, dest[1], {
+                        id: dest[0]
+                    })
+                })
 
-        return {popularDestinations: result}
+                return data
+            })
+
+
+
+        return {popularDestinations, popularPlaces}
     }
 }
 </script>
@@ -63,6 +83,37 @@ export default {
 <style lang="scss">
 .popular-destination {
     padding: 5rem 0;
+
+    .info {
+        text-align: center;
+        margin-bottom: 1.7rem;
+
+        h2 {
+            font-weight: 600;
+            font-size: 1.7rem;
+
+            @media (max-width: 767px) {
+                font-size: 1.4rem;
+            }
+        }
+
+        p {
+            color: var(--gray-text-color);
+            max-width: 60%;
+            width: 100%;
+            margin: auto;
+
+            @media (max-width: 767px) {
+                max-width: 100%;
+                font-size: .9rem;
+            }
+        }
+    }
+}
+
+.popular-places {
+    padding: 5rem 0;
+    background-color: var(--light-gray-color);
 
     .info {
         text-align: center;
