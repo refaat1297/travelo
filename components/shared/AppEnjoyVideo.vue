@@ -11,8 +11,6 @@
             <span></span>
         </div>
 
-<!--        <div v-for="(image, imageIndex) in items" :key="imageIndex" @click="index = imageIndex" class="video-button"><span></span></div>-->
-
     </section>
 </template>
 
