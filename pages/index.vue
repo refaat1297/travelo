@@ -2,6 +2,9 @@
     <main class="home-page">
 <!--        <AppSlider />-->
 
+        <nuxt-link to="/dashboard">dashboard</nuxt-link>
+        <nuxt-link to="/destinations">destinations</nuxt-link>
+
         <section class="popular-destination">
             <div class="container">
                 <div class="info">
@@ -38,9 +41,6 @@
 
 <!--        <Testimonials />-->
 
-
-        <nuxt-link to="/dashboard">dashboard</nuxt-link>
-        <nuxt-link to="/destinations">destinations</nuxt-link>
     </main>
 </template>
 

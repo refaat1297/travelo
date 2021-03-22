@@ -1,13 +1,11 @@
 <template>
     <div>
-        <h1>dahsboard</h1>
-        <nuxt-link to="/">home</nuxt-link>
+        <Nuxt/>
     </div>
 </template>
 
 <script>
 export default {
-    layout: 'dashboard'
 }
 </script>
 

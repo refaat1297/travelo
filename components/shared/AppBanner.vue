@@ -1,5 +1,5 @@
 <template>
-    <section class="app-banner" :style="`background-image: url('${image}')`">
+    <section class="app-banner" :style="image ? `background-image: url('${image}')` : null">
         <div class="content">
             <h2>{{ title }}</h2>
             <p>{{ description }}</p>
@@ -10,12 +10,23 @@
 <script>
 export default {
     name: "AppBanner",
-    props: ['image', 'title', 'description']
+    props: {
+        title: {
+            type: String
+        },
+        description: {
+            type: String
+        },
+        image: {
+            type: String,
+        }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 .app-banner {
+    background-image: url("~assets/img/shared/slider/slider-1.png");
     height: 100vh;
     background-position: center center;
     background-size: cover;
