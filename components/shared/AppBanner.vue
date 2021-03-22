@@ -1,5 +1,5 @@
 <template>
-    <section class="app-banner" :style="image ? `background-image: url('${image}')` : null">
+    <section class="app-banner" :style="`background-image: url('${image}')`">
         <div class="content">
             <h2>{{ title }}</h2>
             <p>{{ description }}</p>
@@ -26,7 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 .app-banner {
-    background-image: url("~assets/img/shared/slider/slider-1.png");
+    //background-image: url("~assets/img/shared/slider/slider-1.png");
     height: 100vh;
     background-position: center center;
     background-size: cover;
@@ -36,11 +36,17 @@ export default {
     align-items: center;
     flex-direction: column;
     padding: 0 1rem;
+    transition: all .2s ease-in-out;
+
+    @media (max-width: 767px) {
+        height: 60vh;
+    }
 
 
     .content {
         color: #fff;
         text-align: center;
+        padding: 0 .5rem;
 
         h2 {
             font-family: headingFont, sans-serif;

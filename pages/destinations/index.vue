@@ -3,6 +3,7 @@
         <AppBanner
             title="Destinations"
             description="Pixel Perfect Design With Awesome Contents"
+            :image="require(`assets/img/shared/slider/slider-1.png`)"
         />
         <div class="container">
             <div class="row">

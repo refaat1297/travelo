@@ -4,6 +4,7 @@
 
         <nuxt-link to="/dashboard">dashboard</nuxt-link>
         <nuxt-link to="/destinations">destinations</nuxt-link>
+        <nuxt-link to="/about-us">about us</nuxt-link>
 
         <section class="popular-destination">
             <div class="container">
