@@ -13,11 +13,11 @@
                             <a href="tel:+10 367 826 2567">+10 367 826 2567</a>
                             <a href="mailto:contact@carpenter.com">contact@carpenter.com</a>
                             <div class="social-media">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-pinterest"></i></a>
-                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="#" target="_blank"><i class="fab fa-pinterest"></i></a>
+                                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
                             </div>
                         </div>
                     </div>
@@ -27,9 +27,9 @@
 
                             <div class="links">
                                 <nuxt-link to="/">pricing</nuxt-link>
-                                <nuxt-link to="/">About</nuxt-link>
+                                <nuxt-link to="/about-us">About</nuxt-link>
                                 <nuxt-link to="/">Gallery</nuxt-link>
-                                <nuxt-link to="/">Contact</nuxt-link>
+                                <nuxt-link to="/contact-us">Contact</nuxt-link>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>Copyright ©2021 All rights reserved | by <a href="https://github.com/refaat1297">Ahmed Refaat</a></p>
+                <p>Copyright ©2021 All rights reserved | by <a href="https://github.com/refaat1297" target="_blank">Ahmed Refaat</a></p>
             </div>
         </div>
     </footer>
@@ -114,13 +114,13 @@ footer {
 
             p {
                 font-size: .9rem;
-                color: var(--gray-text-color);
+                color: #AAB1B7;
                 margin-bottom: .6rem;
             }
 
             a {
                 text-decoration: none;
-                color: var(--gray-text-color);
+                color: #AAB1B7;
                 font-size: .9rem;
                 margin-bottom: .3rem;
                 margin-top: .3rem;
@@ -161,7 +161,7 @@ footer {
                 a {
                     display: block;
                     margin-bottom: 1rem;
-                    color: var(--gray-text-color);
+                    color: #AAB1B7;
                     text-transform: capitalize;
                     text-decoration: none;
                     transition: all .2s ease-in-out;
@@ -195,7 +195,7 @@ footer {
                 a {
                     display: block;
                     margin-bottom: 1rem;
-                    color: var(--gray-text-color);
+                    color: #AAB1B7;
                     text-transform: capitalize;
                     text-decoration: none;
                     transition: all .2s ease-in-out;
@@ -249,14 +249,14 @@ footer {
     }
 
     .copyright {
-        border-top: 1px solid rgba(#7a838b, .4);
+        border-top: 1px solid rgba(#AAB1B7, .4);
         padding: 1rem 0;
 
         p {
             margin-bottom: 0;
             text-align: center;
             font-size: .9rem;
-            color: var(--gray-text-color);
+            color: #AAB1B7;
             text-transform: capitalize;
 
             a {

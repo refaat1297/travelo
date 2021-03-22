@@ -27,7 +27,7 @@ export default {
 <style lang="scss" scoped>
 .app-banner {
     //background-image: url("~assets/img/shared/slider/slider-1.png");
-    height: 100vh;
+    height: 75vh;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
