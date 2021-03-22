@@ -55,7 +55,9 @@ import AppSubscribe from "../components/shared/AppSubscribe";
 export default {
     components: {Testimonials, PopularPlacesCard, AppSlider, AppSubscribe, PopularDestinationCard},
     async asyncData (context) {
-        let popularDestinations = await context.app.$axios.$get('/popular-destinations.json')
+        let popularDestinations = await context.app.$axios.$get('/popular-destinations.json', {
+            'Content-Type': 'application/json'
+        })
             .then(res => {
                 let data = Object.entries(res).map(dest => {
                     return Object.assign({}, dest[1], {
@@ -66,7 +68,9 @@ export default {
                 return data
             })
 
-        let popularPlaces = await context.app.$axios.$get(`/destinations.json?orderBy="isPopular"&equalTo=true`)
+        let popularPlaces = await context.app.$axios.$get(`/destinations.json?orderBy="isPopular"&equalTo=true`, {
+            'Content-Type': 'application/json'
+        })
             .then(res => {
                 let data = Object.entries(res).map(dest => {
                     return Object.assign({}, dest[1], {

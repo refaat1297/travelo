@@ -23,6 +23,7 @@ export default {
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
+        '~/plugins/axios.js',
         '~/plugins/preview.client.js',
         // '~/plugins/firebase.js',
         // {src: '~/plugins/vue-cool-lightbox.js', mode: 'client'},
@@ -49,6 +50,17 @@ export default {
     axios: {
         baseURL: 'https://a-travelo-refaat-default-rtdb.firebaseio.com'
     },
+    // publicRuntimeConfig: {
+    //     axios: {
+    //         browserBaseURL: process.env.BROWSER_BASE_URL
+    //     }
+    // },
+    //
+    // privateRuntimeConfig: {
+    //     axios: {
+    //         baseURL: process.env.BASE_URL
+    //     }
+    // },
 
     generate: {
         fallback: true
