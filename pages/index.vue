@@ -18,7 +18,7 @@
             </div>
         </section>
 
-        <Subscribe />
+        <AppSubscribe />
 
         <section class="popular-places">
             <div class="container">
@@ -40,19 +40,20 @@
 
 
         <nuxt-link to="/dashboard">dashboard</nuxt-link>
+        <nuxt-link to="/destinations">destinations</nuxt-link>
     </main>
 </template>
 
 <script>
 import PopularDestinationCard from "../components/site/home/PopularDestinationCard";
 import {fireDb} from "~/plugins/firebase";
-import Subscribe from "../components/shared/Subscribe";
 import AppSlider from "../components/shared/AppSlider";
 import PopularPlacesCard from "../components/site/home/PopularPlacesCard";
 import Testimonials from "../components/site/home/Testimonials";
+import AppSubscribe from "../components/shared/AppSubscribe";
 
 export default {
-    components: {Testimonials, PopularPlacesCard, AppSlider, Subscribe, PopularDestinationCard},
+    components: {Testimonials, PopularPlacesCard, AppSlider, AppSubscribe, PopularDestinationCard},
     async asyncData (context) {
         let popularDestinations = await context.app.$axios.$get('/popular-destinations.json')
             .then(res => {
@@ -65,7 +66,7 @@ export default {
                 return data
             })
 
-        let popularPlaces = await context.app.$axios.$get('/popular-places.json')
+        let popularPlaces = await context.app.$axios.$get(`/destinations.json?orderBy="isPopular"&equalTo=true`)
             .then(res => {
                 let data = Object.entries(res).map(dest => {
                     return Object.assign({}, dest[1], {

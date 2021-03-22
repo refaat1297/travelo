@@ -23,7 +23,7 @@
 
 <script>
 export default {
-    name: "Subscribe"
+    name: "AppSubscribe"
 }
 </script>
 

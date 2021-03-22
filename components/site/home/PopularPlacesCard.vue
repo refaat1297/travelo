@@ -7,9 +7,9 @@
             </div>
             <div class="card-body">
                 <h4 class="card-title">
-                    <nuxt-link to="/">{{ place.name }}</nuxt-link>
+                    <nuxt-link :to="`/destinations/${place.slug}`">{{ place.name }}</nuxt-link>
                 </h4>
-                <p class="card-text">{{ place.description }}</p>
+                <p class="card-text">{{ place.country }}</p>
 
                 <div class="info">
                     <div class="rate">
@@ -22,7 +22,7 @@
 
                     <div class="time">
                         <Clock />
-                        <span>{{ place.time }} Days</span>
+                        <span>{{ place.days }} Days</span>
                     </div>
                 </div>
             </div>
