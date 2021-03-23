@@ -1,5 +1,6 @@
 <template>
     <div>
+        <AppNavbar />
         <Nuxt/>
         <AppSubscribe />
         <AppFooter />
@@ -9,8 +10,9 @@
 <script>
 import AppSubscribe from "../components/shared/AppSubscribe";
 import AppFooter from "../components/shared/AppFooter";
+import AppNavbar from "../components/shared/AppNavbar";
 
 export default {
-    components: {AppFooter, AppSubscribe   }
+    components: {AppNavbar, AppFooter, AppSubscribe   }
 }
 </script>
