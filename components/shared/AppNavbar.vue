@@ -77,20 +77,25 @@ export default {
 
 <style lang="scss" scoped>
 nav {
-    padding: 2rem 0;
-    position: relative;
+    padding: 1rem 0;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
     height: 100%;
-    z-index: 44;
+    z-index: 444;
+    box-shadow: 0 6px 10px #00000017;
+    background-color: #fff;
 
     @media (max-width: 991px) {
         padding: 1rem 0;
     }
 
     .logo {
+        position: relative;
+        z-index: 3;
+
         a {
             img {
                 display: block;
@@ -191,7 +196,7 @@ nav {
         span {
             display: block;
             background-color: #000;
-            width: 80%;
+            width: 60%;
             height: 3px;
 
             &:not(:last-of-type) {
@@ -213,7 +218,7 @@ nav {
         cursor: pointer;
 
         @media (max-width: 991px) {
-            right: 60px;
+            right: 50px;
         }
 
         span {
@@ -227,11 +232,11 @@ nav {
     .mobile-menu {
         position: absolute;
         display: block;
-        width: 96%;
+        width: 89%;
         margin: auto;
         left: 50%;
         top: 16px;
-        //z-index: 99;
+        z-index: 28;
         background-color: #fff;
         transform: translateX(-50%) translateY(-145%);
         padding: 1.3rem 1rem;
@@ -242,6 +247,9 @@ nav {
         }
 
         ul {
+            padding: 0;
+            margin: 0;
+
             li {
                 display: block;
 

@@ -82,7 +82,6 @@ export default {
                 'Content-Type': 'application/json'
             })
                 .then(res => {
-                    console.log(res)
                     let data = Object.entries(res).map(dest => {
                         return Object.assign({}, dest[1], {
                             id: dest[0]
