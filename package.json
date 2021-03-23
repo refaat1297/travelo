@@ -20,7 +20,8 @@
     "swiper": "^6.5.0",
     "vue-awesome-swiper": "^4.1.1",
     "vue-cool-lightbox": "^2.7.1",
-    "vue-easy-slider": "^5.3.4"
+    "vue-easy-slider": "^5.3.4",
+    "vue-slick-carousel": "^1.0.6"
   },
   "devDependencies": {
     "fibers": "^5.0.0",

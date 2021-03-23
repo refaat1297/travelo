@@ -4,6 +4,7 @@
         <Nuxt/>
         <AppEnjoyVideo />
         <AppAdvantages />
+        <AppTestimonials />
         <AppRecentTrips />
         <AppFooter />
     </div>
@@ -15,7 +16,8 @@ import AppEnjoyVideo from "../components/shared/AppEnjoyVideo";
 import AppAdvantages from "../components/shared/AppAdvantages";
 import AppFooter from "../components/shared/AppFooter";
 import AppNavbar from "../components/shared/AppNavbar";
+import AppTestimonials from "../components/shared/AppTestimonials";
 export default {
-    components: {AppNavbar, AppFooter, AppAdvantages, AppEnjoyVideo, AppRecentTrips}
+    components: {AppTestimonials, AppNavbar, AppFooter, AppAdvantages, AppEnjoyVideo, AppRecentTrips}
 }
 </script>
