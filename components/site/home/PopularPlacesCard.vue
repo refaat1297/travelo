@@ -14,8 +14,8 @@
                 <div class="info">
                     <div class="rate">
                         <div class="stars">
-                            <Star v-for="(star, index) in place.rate" :key="'star-' + index" />
-                            <OutlineStar v-for="(star, index) in (5 - place.rate)" :key="'outline-star-' + index" />
+                            <StarIcon v-for="(star, index) in place.rate" :key="'star-' + index" />
+                            <OutlineStarIcon v-for="(star, index) in (5 - place.rate)" :key="'outline-star-' + index" />
                         </div>
                         <div class="review">({{  place.reviews  }} Review)</div>
                     </div>
@@ -31,12 +31,12 @@
 </template>
 
 <script>
-import Star from "../../icons/Star";
-import Clock from "../../icons/Clock";
-import OutlineStar from "../../icons/OutlineStar";
+import StarIcon from "../../icons/StarIcon";
+import ClockIcon from "../../icons/ClockIcon";
+import OutlineStar from "../../icons/OutlineStarIcon";
 export default {
     name: "PopularPlacesCard",
-    components: {OutlineStar, Clock, Star},
+    components: {OutlineStar, ClockIcon, StarIcon},
     props: {
         place: {
             type: Object,

@@ -8,7 +8,7 @@
                     <div class="trip">
                         <div class="card">
                             <div class="img-container">
-                                <img :src="trip.image" class="card-img-top" alt="">
+                                <img :src="trip.image" class="card-img-top" loading="lazy" alt="">
                             </div>
                             <div class="card-body">
                                 <span class="date">{{ trip.date }}</span>

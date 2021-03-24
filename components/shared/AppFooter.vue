@@ -6,7 +6,7 @@
                     <div class="col-lg-4 col-sm-6">
                         <div class="site-info">
                             <nuxt-link to="/">
-                                <img src="~assets/img/shared/footer_logo.png" alt="">
+                                <img src="~assets/img/shared/footer_logo.png" loading="lazy" alt="">
                             </nuxt-link>
 
                             <p>5th flora, 700/D kings road, green lane New York-1782</p>
@@ -55,22 +55,22 @@
 
                             <div class="links">
                                 <nuxt-link to="/">
-                                    <img src="~assets/img/shared/insta/insta-1.png" alt="">
+                                    <img src="~assets/img/shared/insta/insta-1.png" loading="lazy" alt="">
                                 </nuxt-link>
                                 <nuxt-link to="/">
-                                    <img src="~assets/img/shared/insta/insta-2.png" alt="">
+                                    <img src="~assets/img/shared/insta/insta-2.png" loading="lazy" alt="">
                                 </nuxt-link>
                                 <nuxt-link to="/">
-                                    <img src="~assets/img/shared/insta/insta-3.png" alt="">
+                                    <img src="~assets/img/shared/insta/insta-3.png" loading="lazy" alt="">
                                 </nuxt-link>
                                 <nuxt-link to="/">
-                                    <img src="~assets/img/shared/insta/insta-4.png" alt="">
+                                    <img src="~assets/img/shared/insta/insta-4.png" loading="lazy" alt="">
                                 </nuxt-link>
                                 <nuxt-link to="/">
-                                    <img src="~assets/img/shared/insta/insta-5.png" alt="">
+                                    <img src="~assets/img/shared/insta/insta-5.png" loading="lazy" alt="">
                                 </nuxt-link>
                                 <nuxt-link to="/">
-                                    <img src="~assets/img/shared/insta/insta-6.png" alt="">
+                                    <img src="~assets/img/shared/insta/insta-6.png" loading="lazy" alt="">
                                 </nuxt-link>
                             </div>
                         </div>

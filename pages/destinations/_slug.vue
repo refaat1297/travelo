@@ -95,13 +95,13 @@ export default {
         } catch (error) {
             console.log(error)
         }
-    }
+    },
 }
 </script>
 
 <style lang="scss" scoped>
 .destination-details {
-   .details {
+    .details {
        padding: 5rem 0;
 
        .description {

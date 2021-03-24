@@ -29,9 +29,8 @@ export default {
         '~/plugins/axios.js',
         '~/plugins/preview.client.js',
         // '~/plugins/firebase.js',
-        // {src: '~/plugins/vue-cool-lightbox.js', mode: 'client'},
         '~/plugins/vue-awesome-swiper.js',
-        // '~/plugins/easy-slider.js'
+        {src: '~/plugins/vue-slider-component.js', mode: 'client'},
     ],
 
 

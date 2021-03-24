@@ -234,16 +234,16 @@ nav {
         display: block;
         width: 89%;
         margin: auto;
-        left: 50%;
+        left: 0;
         top: 16px;
         z-index: 28;
         background-color: #fff;
-        transform: translateX(-50%) translateY(-145%);
+        transform: translateX(-100%) translateY(0);
         padding: 1.3rem 1rem;
         transition: all .3s ease-in-out;
 
         &.open-small-menu {
-            transform: translateX(-50%) translateY(0);
+            transform: translateX(6%) translateY(0);
         }
 
         ul {

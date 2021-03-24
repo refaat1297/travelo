@@ -1,6 +1,6 @@
 <template>
     <section class="app-testimonials">
-        <div class="container">
+        <div class="container" v-if="testimonials">
 
 
             <div class="row justify-content-center">
@@ -8,7 +8,7 @@
                     <VueSlickCarousel  v-bind="settings">
                         <div class="testimonial text-center" v-for="testimonial in testimonials" :key="testimonial.id">
                             <div class="img-container">
-                                <img :src="testimonial.image" alt="">
+                                <img :src="testimonial.image" alt="" loading="lazy">
                                 <span>
                                     <i class="fas fa-quote-left"></i>
                                 </span>
