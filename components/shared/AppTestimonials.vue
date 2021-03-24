@@ -1,51 +1,20 @@
 <template>
     <section class="app-testimonials">
         <div class="container">
+
+
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10">
                     <VueSlickCarousel  v-bind="settings">
-                        <div class="testimonial text-center">
+                        <div class="testimonial text-center" v-for="testimonial in testimonials" :key="testimonial.id">
                             <div class="img-container">
-                                <img src="~assets/img/author.png" alt="">
+                                <img :src="testimonial.image" alt="">
                                 <span>
                                     <i class="fas fa-quote-left"></i>
                                 </span>
                             </div>
-                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
-                            <h4>- Jerry Mouse</h4>
-                        </div>
-
-                        <div class="testimonial text-center">
-                            <div class="img-container">
-                                <img src="~assets/img/author.png" alt="">
-                                <span>
-                                    <i class="fas fa-quote-left"></i>
-                                </span>
-                            </div>
-                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
-                            <h4>- Jerry Mouse</h4>
-                        </div>
-
-                        <div class="testimonial text-center">
-                            <div class="img-container">
-                                <img src="~assets/img/author.png" alt="">
-                                <span>
-                                    <i class="fas fa-quote-left"></i>
-                                </span>
-                            </div>
-                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
-                            <h4>- Jerry Mouse</h4>
-                        </div>
-
-                        <div class="testimonial text-center">
-                            <div class="img-container">
-                                <img src="~assets/img/author.png" alt="">
-                                <span>
-                                    <i class="fas fa-quote-left"></i>
-                                </span>
-                            </div>
-                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
-                            <h4>- Jerry Mouse</h4>
+                            <p>"{{ testimonial.description }}</p>
+                            <h4>- {{ testimonial.name }}</h4>
                         </div>
                     </VueSlickCarousel>
                 </div>
@@ -66,11 +35,27 @@ export default {
     },
     data() {
         return {
+            testimonials: null,
             settings: {
                 "dots": true,
                 "dotsClass": "slick-dots custom-dot-class",
             }
         }
+    },
+    async fetch () {
+        this.testimonials = await this.$axios
+            .$get(`/testimonials.json`, {
+                'Content-Type': 'application/json'
+            })
+            .then(res => {
+                let data = Object.entries(res).map(dest => {
+                    return Object.assign({}, dest[1], {
+                        id: dest[0]
+                    })
+                })
+
+                return data
+            })
     }
 }
 </script>
@@ -126,12 +111,12 @@ export default {
             width: 100px;
             height: 100px;
 
-
             img {
                 margin: auto;
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                border-radius: 50%;
             }
 
             span {
