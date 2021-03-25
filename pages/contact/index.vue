@@ -186,6 +186,11 @@ export default {
                     color: var(--gray-text-color);
                     display: block;
                     margin-right: .5rem;
+
+                    @media (max-width: 767px) {
+                        width: 24px;
+                        height: 24px;
+                    }
                 }
 
                 .info {

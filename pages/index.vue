@@ -1,6 +1,6 @@
 <template>
     <main class="home-page">
-<!--        <AppSlider />-->
+        <AppSlider />
 
         <section class="popular-destination">
             <div class="container">

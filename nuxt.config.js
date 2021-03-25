@@ -2,7 +2,7 @@ export default {
     // Global page headers: https://go.nuxtjs.dev/config-head
     // target: 'static',
     head: {
-        title: 'travelo',
+        title: 'Travelo',
         htmlAttrs: {
             lang: 'en'
         },
@@ -12,7 +12,7 @@ export default {
             {hid: 'description', name: 'description', content: ''}
         ],
         link: [
-            {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+            {rel: 'icon', type: 'image/x-icon', href: '/travelo-icon.ico'}
         ],
         script: [
             {src: '/fontawesome.min.js'}
@@ -23,6 +23,11 @@ export default {
     css: [
         '~/assets/scss/main.scss'
     ],
+
+    loading: {
+        color: '#ff4a52',
+        height: '5px'
+    },
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [

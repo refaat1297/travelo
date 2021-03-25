@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="time">
-                        <Clock />
+                        <ClockIcon />
                         <span>{{ place.days }} Days</span>
                     </div>
                 </div>
@@ -33,10 +33,10 @@
 <script>
 import StarIcon from "../../icons/StarIcon";
 import ClockIcon from "../../icons/ClockIcon";
-import OutlineStar from "../../icons/OutlineStarIcon";
+import OutlineStarIcon from "../../icons/OutlineStarIcon";
 export default {
     name: "PopularPlacesCard",
-    components: {OutlineStar, ClockIcon, StarIcon},
+    components: {OutlineStarIcon, ClockIcon, StarIcon},
     props: {
         place: {
             type: Object,
