@@ -33,7 +33,7 @@ export default {
     plugins: [
         '~/plugins/axios.js',
         '~/plugins/preview.client.js',
-        // '~/plugins/firebase.js',
+        '~/plugins/firebase.js',
         '~/plugins/vue-awesome-swiper.js',
         {src: '~/plugins/vue-slider-component.js', mode: 'client'},
     ],
