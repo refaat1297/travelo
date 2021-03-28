@@ -1,6 +1,6 @@
 <template>
     <div class="popular-places-card">
-        <div class="card">
+        <div class="card" v-if="Object.keys(place).length > 0">
             <div class="img-container">
                 <img :src="place.image" class="card-img-top" alt="">
                 <div class="price">${{ place.price }}</div>

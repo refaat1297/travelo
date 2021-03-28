@@ -1,7 +1,7 @@
 <template>
     <section class="admin-destinations">
         <div class="container">
-            <nuxt-link class="btn btn-primary" to="/dashboard/destinations/new">new destination</nuxt-link>
+            <nuxt-link class="btn btn-primary" to="/dashboard/destinations/add">new destination</nuxt-link>
         </div>
     </section>
 </template>

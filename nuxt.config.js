@@ -34,8 +34,10 @@ export default {
         '~/plugins/axios.js',
         '~/plugins/preview.client.js',
         '~/plugins/firebase.js',
+        {src: '~/plugins/vue2-dropzone.js', mode: 'client'},
         '~/plugins/vue-awesome-swiper.js',
         {src: '~/plugins/vue-slider-component.js', mode: 'client'},
+        {src: '~/plugins/vuelidate.client.js'}
     ],
 
 
@@ -57,6 +59,7 @@ export default {
     axios: {
         baseURL: 'https://a-travelo-refaat-default-rtdb.firebaseio.com'
     },
+
     // publicRuntimeConfig: {
     //     axios: {
     //         browserBaseURL: process.env.BROWSER_BASE_URL
