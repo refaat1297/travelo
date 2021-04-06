@@ -8,6 +8,16 @@
     font-family: textFont;
 }
 
+@font-face {
+    src: url("~/assets/fonts/Rubik-SemiBold.ttf");
+    font-family: textSemiBoldFont;
+}
+
+@font-face {
+    src: url("~/assets/fonts/Rubik-Bold.ttf");
+    font-family: textBoldFont;
+}
+
 @keyframes pulse-border {
     0% {
         transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);

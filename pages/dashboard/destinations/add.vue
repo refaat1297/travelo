@@ -138,6 +138,7 @@
 
                             <div class="form-group">
                                 <input
+                                    ref="imageFile"
                                     type="file"
                                     class="form-control"
                                     id="image"
@@ -153,6 +154,8 @@
                                         <img :src="preview.image.url" class="img-fluid" alt="">
                                     </div>
                                 </label>
+
+<!--                                <button @click.prevent="onResetHandler()">reset</button>-->
 
                             </div>
 
@@ -252,6 +255,12 @@ export default {
         }
     },
     methods: {
+        onResetHandler () {
+            this.$refs.imageFile.value = null
+            this.preview.image.name = null
+            this.preview.image.url = null
+            console.log(this.$refs.imageFile.value)
+        },
         addDescription(index) {
             this.form.description.push({content: ''})
         },
