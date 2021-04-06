@@ -17,7 +17,7 @@
                             <li><nuxt-link to="/destinations">destinations</nuxt-link></li>
                             <li><nuxt-link to="/blog">blog</nuxt-link></li>
                             <li><nuxt-link to="/contact">contact</nuxt-link></li>
-                            <li><nuxt-link to="/dashboard">dashboard</nuxt-link></li>
+<!--                            <li><nuxt-link to="/dashboard">dashboard</nuxt-link></li>-->
                         </ul>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                             <li><nuxt-link to="/destinations">destinations</nuxt-link></li>
                             <li><nuxt-link to="/blog">blog</nuxt-link></li>
                             <li><nuxt-link to="/contact">contact</nuxt-link></li>
-                            <li><nuxt-link to="/dashboard">dashboard</nuxt-link></li>
+<!--                            <li><nuxt-link to="/dashboard">dashboard</nuxt-link></li>-->
                         </ul>
                     </div>
                 </div>

@@ -13,7 +13,7 @@
                         <Nuxt/>
                     </div>
                     <div class="col-lg-4">
-                        search
+                        <BlogNewsLetter />
                     </div>
                 </div>
             </div>
@@ -26,9 +26,10 @@
 import AppNavbar from "../components/shared/AppNavbar";
 import AppFooter from "../components/shared/AppFooter";
 import AppBanner from "../components/shared/AppBanner";
+import BlogNewsLetter from "../components/site/blog/BlogNewsLetter";
 
 export default {
-    components: {AppBanner, AppNavbar, AppFooter}
+    components: {BlogNewsLetter, AppBanner, AppNavbar, AppFooter}
 }
 </script>
 
