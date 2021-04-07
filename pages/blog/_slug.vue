@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                <p class="card-text" v-for="(desc, i) in post.content" :key="`post-${id}`">{{ desc }}</p>
+                <p class="card-text" v-for="(desc, i) in post.content" :key="`post-${i}`">{{ desc }}</p>
             </div>
         </div>
     </section>

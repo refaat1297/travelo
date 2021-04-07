@@ -67,6 +67,7 @@ export default {
 .posts {
     .post-card {
         box-shadow: 0 8px 13px 2px #d2d2d2ab;
+        margin-bottom: 2rem;
 
         .card {
             border: 0;
