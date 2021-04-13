@@ -32,12 +32,14 @@ export default {
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
         '~/plugins/axios.js',
+        '~/plugins/vue-notification.js',
         '~/plugins/preview.client.js',
         '~/plugins/firebase.js',
         {src: '~/plugins/vue2-dropzone.js', mode: 'client'},
         '~/plugins/vue-awesome-swiper.js',
         {src: '~/plugins/vue-slider-component.js', mode: 'client'},
-        {src: '~/plugins/vuelidate.client.js'}
+        {src: '~/plugins/vuelidate.client.js'},
+        {src: '~/plugins/vue-tags-input.js', mode: 'client'}
     ],
 
 
@@ -77,5 +79,7 @@ export default {
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
-    build: {}
+    build: {
+        vendor: ['@johmun/vue-tags-input']
+    }
 }
