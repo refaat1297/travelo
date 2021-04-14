@@ -31,7 +31,11 @@ export default {
         text-transform: capitalize;
         border-bottom: 1px solid rgba(#7a838b, .1);
         padding-bottom: .6rem;
-        color: var(--dark-blue-color)
+        color: var(--dark-blue-color);
+
+        @media (max-width: 767px) {
+            font-size: 1rem;
+        }
     }
 
     .list-unstyled {

@@ -20,7 +20,7 @@
                             <div class="tags">
                                 <i class="fas fa-user"></i>
                                 <p>
-                                    <a href="#" v-for="(tag, i) in post.tags" :key="`tag-${i}`">
+                                    <a href="javascript:;" v-for="(tag, i) in post.tags" :key="`tag-${i}`">
                                         <span v-if="i === (post.tags.length - 1)">{{ tag }}</span>
                                         <span v-else>{{ tag }},</span>
                                     </a>
@@ -52,13 +52,14 @@ export default {
                     .entries(res.data)
                     .map(post => {
                         return Object.assign({}, post[1], {
+                            comments: Object.keys(post[1].comments).length,
                             id: post[0]
                         })
                     })
             })
 
         return {posts}
-    }
+    },
 }
 </script>
 

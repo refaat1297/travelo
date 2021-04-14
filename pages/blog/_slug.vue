@@ -10,55 +10,91 @@
                     <div class="tags">
                         <i class="fas fa-user"></i>
                         <p>
-                            <a href="#" v-for="(tag, i) in post.tags" :key="`tag-${i}`">
+                            <a href="javascript:;" v-for="(tag, i) in post.tags" :key="`tag-${i}`">
                                 <span v-if="i === (post.tags.length - 1)">{{ tag }}</span>
                                 <span v-else>{{ tag }},</span>
                             </a>
                         </p>
-                    </div> |
+                    </div>
+                    |
                     <div class="comments">
                         <i class="fas fa-comments"></i>
-                        <span>{{ post.comments < 10 ? `0${post.comments}` : post.comments }} comments</span>
+                        <span>{{ commentsCount < 10 ? `0${commentsCount}` : commentsCount }} comments</span>
                     </div>
                 </div>
 
                 <p class="card-text" v-for="(desc, i) in post.content" :key="`post-${i}`">{{ desc }}</p>
             </div>
         </div>
+
+        <hr>
+
+        <BlogPostComments :comments="comments" />
+
+        <hr>
+
+        <BlogCommentForm :postID="post.id" @getNewComment="getNewComment" />
     </section>
 </template>
 
 <script>
 import AppBanner from "../../components/shared/AppBanner";
+import BlogPostComments from "../../components/site/blog/BlogPostComments";
+import BlogCommentForm from "../../components/site/blog/BlogCommentForm";
+
 export default {
-    components: {AppBanner},
+    components: {BlogCommentForm, BlogPostComments, AppBanner},
     layout: 'blog',
-    async asyncData (context) {
+    async asyncData(context) {
         try {
             let post = await context.app.$axios.$get(`/blog.json?orderBy="slug"&equalTo="${context.params.slug}"`, {
                 'Content-Type': 'application/json'
             })
                 .then(res => {
                     let data = Object.entries(res).map(postDetails => {
+
+
                         return Object.assign({}, postDetails[1], {
                             id: postDetails[0]
                         })
                     })
 
-                    return  data[0]
+                    return data[0]
                 })
 
-            return {post}
+
+            let comments = await context.app.$axios.$get(`/comments/${post.id}.json`)
+                .then(res => {
+                    return Object.entries(res).map(comment => {
+                        return Object.assign({}, comment[1], {
+                            id: comment[0]
+                        })
+                    })
+                })
+
+
+            return {post, comments}
         } catch (error) {
             console.log(error)
         }
     },
+    computed: {
+        commentsCount() {
+            return Object.keys(this.post.comments).length
+        }
+    },
+    methods: {
+        getNewComment (comment) {
+            this.comments.push(comment)
+        }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 .post-details {
     //box-shadow: 0 8px 13px 2px #d2d2d2ab;
+    margin-bottom: 2rem;
 
     .card {
         border: 0;
@@ -190,5 +226,6 @@ export default {
             }
         }
     }
+
 }
 </style>
