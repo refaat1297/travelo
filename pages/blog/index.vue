@@ -2,10 +2,10 @@
     <section>
 
         <div class="posts">
-            <div class="post-card" v-for="post in posts" :key="post.id">
+            <div class="post-card" v-if="posts" v-for="post in posts" :key="post.id">
                 <div class="card">
                     <div class="image-container">
-                        <img :src="post.image" class="card-img-top" alt="">
+                        <img v-if="post.image" :src="post.image" class="card-img-top" alt="">
                         <div class="date">
                             <span>15</span>
                             <span>jan</span>
@@ -25,10 +25,11 @@
                                         <span v-else>{{ tag }},</span>
                                     </a>
                                 </p>
-                            </div> |
+                            </div>
+                            |
                             <div class="comments">
                                 <i class="fas fa-comments"></i>
-                                <span>{{ post.comments < 10 ? `0${post.comments}` : post.comments }} comments</span>
+                                <span>{{ post.comments < 10 || post.comments !== 0 ? `0${post.comments}` : post.comments }} comments</span>
                             </div>
                         </div>
                     </div>
@@ -51,12 +52,15 @@ export default {
                 return Object
                     .entries(res.data)
                     .map(post => {
+                        // console.log(post[1].comments ? Object.keys(post[1].comments).length : 0)
                         return Object.assign({}, post[1], {
-                            comments: Object.keys(post[1].comments).length,
+                            comments: post[1].comments ? Object.keys(post[1].comments).length : 0,
                             id: post[0]
                         })
                     })
             })
+
+        // console.log(posts)
 
         return {posts}
     },

@@ -120,7 +120,7 @@ export default {
                 this.loading = true
 
                 let id = (await this.$axios.post(`/comments/${this.postID}.json`, this.form)).data.name
-                await this.$axios.put(`/blog/${this.postID}/comments.json`, {[id]: true})
+                await this.$axios.patch(`/blog/${this.postID}/comments.json`, {[id]: true})
 
                 this.$emit('getNewComment', this.form)
 

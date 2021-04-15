@@ -1,8 +1,8 @@
 <template>
-    <section class="post-details">
+    <section class="post-details ">
         <div class="card">
             <div class="image-container">
-                <img :src="post.image" class="card-img-top" alt="">
+                <img v-if="post.image" :src="post.image" class="card-img-top" alt="">
             </div>
             <div class="card-body">
                 <h3 class="card-title">{{ post.title }}</h3>
@@ -17,9 +17,9 @@
                         </p>
                     </div>
                     |
-                    <div class="comments">
+                    <div class="comments" v-if="commentsCount">
                         <i class="fas fa-comments"></i>
-                        <span>{{ commentsCount < 10 ? `0${commentsCount}` : commentsCount }} comments</span>
+                        <span>{{ commentsCount < 10 || commentsCount !== 0 ? `0${commentsCount}` : commentsCount }} comments</span>
                     </div>
                 </div>
 
@@ -52,8 +52,6 @@ export default {
             })
                 .then(res => {
                     let data = Object.entries(res).map(postDetails => {
-
-
                         return Object.assign({}, postDetails[1], {
                             id: postDetails[0]
                         })
@@ -62,16 +60,25 @@ export default {
                     return data[0]
                 })
 
+            // console.log(post)
+
 
             let comments = await context.app.$axios.$get(`/comments/${post.id}.json`)
                 .then(res => {
-                    return Object.entries(res).map(comment => {
-                        return Object.assign({}, comment[1], {
-                            id: comment[0]
-                        })
-                    })
-                })
+                    // console.log(res)
 
+                    if (res) {
+                        return Object.entries(res).map(comment => {
+                            return Object.assign({}, comment[1], {
+                                id: comment[0]
+                            })
+                        })
+                    } else {
+                        return []
+                    }
+
+
+                })
 
             return {post, comments}
         } catch (error) {
@@ -79,8 +86,8 @@ export default {
         }
     },
     computed: {
-        commentsCount() {
-            return Object.keys(this.post.comments).length
+        commentsCount () {
+            return this.comments.length
         }
     },
     methods: {
