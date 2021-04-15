@@ -38,7 +38,7 @@ export default {
         {src: '~/plugins/vue2-dropzone.js', mode: 'client'},
         '~/plugins/vue-awesome-swiper.js',
         {src: '~/plugins/vue-slider-component.js', mode: 'client'},
-        {src: '~/plugins/vuelidate.client.js'},
+        {src: '~/plugins/vuelidate.js'},
         {src: '~/plugins/vue-tags-input.js', mode: 'client'}
     ],
 
