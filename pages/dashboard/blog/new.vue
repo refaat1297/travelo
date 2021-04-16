@@ -8,10 +8,19 @@
             <div class="container">
                 <form @submit.prevent="newPostHandler">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="title.." v-model="form.title">
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="title.."
+                            v-model="$v.form.title.$model">
                     </div>
+
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="short description.." v-model="form.shortDescription">
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="short description.."
+                            v-model="$v.form.shortDescription.$model">
                     </div>
 
                     <div class="form-group">
@@ -38,8 +47,8 @@
                         <client-only>
                             <vue-tags-input
                                 placeholder="Press ENTER to add new tag.."
-                                v-model="form.tag"
-                                :tags="form.tags"
+                                v-model="tag"
+                                :tags="$v.form.tags.$model"
                                 @tags-changed="newTags => form.tags = newTags"
                             ></vue-tags-input>
                         </client-only>
@@ -47,12 +56,12 @@
 
                     <div
                         class="form-group"
-                        v-for="(item,index) in form.content"
+                        v-for="(item,index) in $v.form.content.$each.$iter"
                         :key="`description-${index}`">
                     <textarea
                         class="form-control"
-                        v-model="item.description"
-                        :placeholder="`description number ${index + 1}`" rows="5"></textarea>
+                        v-model="item.description.$model"
+                        :placeholder="`description number ${+index + 1}`" rows="5"></textarea>
 
                         <div class="actions">
                             <span
@@ -89,6 +98,7 @@ import slugify from 'slugify'
 import {storageDB} from '@/plugins/firebase'
 import AppBanner from "../../../components/shared/AppBanner";
 
+import {required, minLength, maxLength, between} from 'vuelidate/lib/validators'
 
 export default {
     components: {AppBanner},
@@ -96,11 +106,11 @@ export default {
     data() {
         return {
             loading: false,
+            tag: '',
             form: {
                 title: '',
                 shortDescription: '',
                 content: [{description: ''}],
-                tag: '',
                 tags: [],
             },
             preview: {
@@ -112,6 +122,38 @@ export default {
             files: {
                 image: null,
             },
+        }
+    },
+    validations: {
+        form: {
+            title: {
+                required,
+                minLength: minLength(10)
+            },
+            shortDescription: {
+                required,
+                minLength: minLength(10)
+            },
+            content: {
+                required,
+                minLength: minLength(0),
+                $each: {
+                    description: {
+                        required,
+                        minLength: minLength(10)
+                    }
+                },
+            },
+            tags: {
+                required,
+                minLength: minLength(1),
+                maxLength: maxLength(4)
+            }
+        },
+        files: {
+            image: {
+                required
+            }
         }
     },
     computed: {
@@ -144,33 +186,73 @@ export default {
         },
         async newPostHandler() {
 
-            this.loading = true
+            this.$v.$touch()
 
-            const storageImageRef = await storageDB.ref(`destinations/${this.files.image.name}`)
-            await storageImageRef.put(this.files.image)
-            const imageURL = await storageImageRef.getDownloadURL()
+            if (this.$v.$invalid) {
 
-            let tags = this.form.tags.map(tag => tag.text),
-                content = this.form.content.map(item => item.description)
+                let errorMsg = []
 
-            let formData = {
-                title: this.form.title,
-                slug: this.slug,
-                shortDescription: this.form.shortDescription,
-                content,
-                tags,
-                addedOn: Date.now(),
-                comments: 3,
-                image: imageURL
+                if (this.$v.form.title.$invalid) {
+                    errorMsg.push(`title must be greater than ${this.$v.form.title.$params.minLength.min} characters`)
+                } else if (this.$v.form.shortDescription.$invalid) {
+                    errorMsg.push(`short description must be greater than ${this.$v.form.shortDescription.$params.minLength.min} characters`)
+                } else if (this.$v.files.image.$invalid) {
+                    errorMsg.push(`image is required`)
+                } else if (this.$v.form.tags.$invalid) {
+                    errorMsg.push(`tags must be between ${this.$v.form.tags.$params.minLength.min} and ${this.$v.form.tags.$params.maxLength.max} tags`)
+                } else if (this.$v.form.content.$invalid) {
+                    errorMsg.push(`fill all description inputs so that every input must be greater 10 characters`)
+                }
+
+                for (let msg of errorMsg) {
+                    this.$notify({
+                        message: msg,
+                        type: "error",
+                        top: true,
+                        bottom: false,
+                        left: false,
+                        right: true,
+                        showClose: false,
+                        closeDelay: 4500
+                    })
+                }
+
+            } else {
+                this.loading = true
+
+                const storageImageRef = await storageDB.ref(`destinations/${this.files.image.name}`)
+                await storageImageRef.put(this.files.image)
+                const imageURL = await storageImageRef.getDownloadURL()
+
+                let tags = this.form.tags.map(tag => tag.text),
+                    content = this.form.content.map(item => item.description)
+
+                let formData = {
+                    title: this.form.title,
+                    slug: this.slug,
+                    shortDescription: this.form.shortDescription,
+                    content,
+                    tags,
+                    addedOn: Date.now(),
+                    image: imageURL
+                }
+
+                await this.$axios.$post('/blog.json', formData)
+                    .then(res => {
+                        this.$router.push('/dashboard/blog')
+                        this.loading = false
+                        this.$notify({
+                            message: 'blog post added successfully..',
+                            type: "success",
+                            top: true,
+                            bottom: false,
+                            left: false,
+                            right: true,
+                            showClose: false,
+                            closeDelay: 4500
+                        })
+                    })
             }
-
-            console.log(formData)
-
-            await this.$axios.$post('/blog.json', formData)
-                .then(res => {
-                    this.$router.push('/dashboard/blog')
-                    this.loading = false
-                })
         }
     }
 

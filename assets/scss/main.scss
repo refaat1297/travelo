@@ -29,3 +29,19 @@ body {
     background-color: #e5e7eb;
     cursor: pointer;
 }
+
+*::selection {
+    background: #444;
+    color: #fff;
+    text-shadow: none;
+}
+
+//.page-enter-active,
+//.page-leave-active {
+//    transition: opacity 0.2s;
+//}
+//.page-enter,
+//.page-leave-to {
+//    opacity: 0;
+//}
+

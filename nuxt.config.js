@@ -82,5 +82,6 @@ export default {
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
         vendor: ['@johmun/vue-tags-input']
-    }
+    },
+    // pageTransition: 'page'
 }
