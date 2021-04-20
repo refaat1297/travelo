@@ -4,7 +4,7 @@
             title="new blog"
             :image="require(`~/assets/img/shared/new-destination-banner.jpeg`)"
         />
-        <section class="add-new-form">
+        <section class="add-new-form" v-if="loadingData">
             <div class="container">
                 <form @submit.prevent="newPostHandler">
                     <div class="form-group">
@@ -90,15 +90,18 @@
                 </form>
             </div>
         </section>
+        <div v-else>
+            <h1>loading...</h1>
+        </div>
     </div>
 </template>
 
 <script>
 import slugify from 'slugify'
 import {storageDB} from '@/plugins/firebase'
-import AppBanner from "../../../components/shared/AppBanner";
 
 import {required, minLength, maxLength, between} from 'vuelidate/lib/validators'
+import AppBanner from "../../../../components/shared/AppBanner";
 
 export default {
     components: {AppBanner},
@@ -106,6 +109,8 @@ export default {
     data() {
         return {
             loading: false,
+            loadingData: false,
+            postID: null,
             tag: '',
             form: {
                 title: '',
@@ -155,6 +160,28 @@ export default {
                 required
             }
         }
+    },
+    async created () {
+        await this.$axios.$get(`/blog.json?orderBy="slug"&equalTo="${this.$route.params.slug}"`)
+            .then(res => {
+                this.loadingData = true
+
+                let id = Object.entries(res)[0][0]
+                let formData = Object.entries(res)[0][1]
+
+                this.postID = id
+
+                this.form.title = formData.title
+                this.form.shortDescription = formData.shortDescription
+                this.form.content = formData.content.map(desc => {
+                    return {description: desc}
+                })
+                this.form.tags = formData.tags.map(tag => {
+                    return {text: tag}
+                })
+                this.preview.image.url = formData.image
+                this.files.image = formData.image
+            })
     },
     computed: {
         slug() {
@@ -220,9 +247,16 @@ export default {
             } else {
                 this.loading = true
 
-                const storageImageRef = await storageDB.ref(`blog/${this.files.image.name}`)
-                await storageImageRef.put(this.files.image)
-                const imageURL = await storageImageRef.getDownloadURL()
+                let imageURL;
+
+                if (!!this.preview.image.name) {
+                    const storageImageRef = await storageDB.ref(`blog/${this.files.image.name}`)
+                    await storageImageRef.put(this.files.image)
+                    imageURL = await storageImageRef.getDownloadURL()
+                } else {
+                    imageURL = this.files.image.url
+                }
+
 
                 let tags = this.form.tags.map(tag => tag.text),
                     content = this.form.content.map(item => item.description)
@@ -237,12 +271,12 @@ export default {
                     image: imageURL
                 }
 
-                await this.$axios.$post('/blog.json', formData)
+                await this.$axios.$patch(`/blog/${this.postID}.json`, formData)
                     .then(res => {
                         this.$router.push('/dashboard/blog')
                         this.loading = false
                         this.$notify({
-                            message: 'blog post added successfully..',
+                            message: 'blog post edited successfully..',
                             type: "success",
                             top: true,
                             bottom: false,
@@ -255,7 +289,6 @@ export default {
             }
         }
     }
-
 }
 </script>
 
@@ -458,4 +491,3 @@ export default {
     }
 }
 </style>
-
