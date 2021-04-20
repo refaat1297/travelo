@@ -5,6 +5,7 @@
         <ol v-if="!!blog">
             <li v-for="post in blog" :key="post.id">
                 <nuxt-link :to="`/dashboard/blog/${post.slug}/edit`">{{ post.title }}</nuxt-link>
+                <button>delete</button>
             </li>
         </ol>
 
@@ -27,7 +28,7 @@ export default {
                     return Object.assign({}, post[1], {id: post[0]})
                 })
             })
-    }
+    },
 }
 </script>
 
